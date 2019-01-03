@@ -1,150 +1,155 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Train Schedule App</title>
 
-    <!-- Link in Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Schedule App</title>
 
-    <!-- Link in CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- Links for Bootstrap, Fontawesome, CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  </head>
+</head>
 
-  <body>
-    
+<body>
 
 
-    <!-- Jumbotron for Title of Page -->
-    <div class="jumbotron">
-      <!-- <div class="row"> -->
 
-        <!-- Page Title -->
-        <div id = "logo" class="col-lg-8 col-sm-8 col-xs-8">
-          <h1 class="text-center">Train Schedule App</h1>
-          <h2 class="text-center">Add a Train or View the Schedule</h2>
-          <h4 class="text-center">Updated every minute</h4>
-        </div>
+  <!-- Jumbotron Title-->
+  <div class="jumbotron">
 
-      <!-- </div> -->
+    <div id="logo" class="col-lg-12 col-sm-12 col-xs-12">
+      <h1 class="text-center">Train Schedule App</h1>
+      <h2 class="text-center">Add a Train or View the Schedule</h2>
+      <h4 class="text-center">Updated every minute</h4>
     </div>
-    
 
-  <!-- Main Page Container -->
+  </div>
+
+
+  <!-- Container -->
   <div class="container">
 
-    <!-- Current Time -->
+    <!-- Time -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="text-center clock-display">Current Time: <span id = "current-time" class = "clock-display"></span></h1>
+        <h1 class="text-center clock-display">Current Time: <span id="current-time" class="clock-display"></span></h1>
       </div>
     </div>
 
     <br>
 
 
-      <!-- Current Train Schedule Panel -->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel panel-default">
+    <!-- Train Schedule Panel -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
 
-            <!-- Panel Title -->
-            <div class="panel-heading">
-              <h3 class="panel-title">Current Train Schedule</h3>
-            </div>
+          <!-- Panel Title -->
+          <div class="panel-heading">
+            <h3 class="panel-title">Current Train Schedule</h3>
+          </div>
 
-            <!-- Panel Body -->
-            <div class="panel-body">
+          <!-- Panel Body -->
+          <div class="panel-body">
 
-              <!-- Table of Train Schedule -->
-              <table class="table">
+            <!-- Table of Train Schedule -->
+            <table class="table table-striped">
 
-                <!-- Table Header -->
-                <tr id = "static-table-header">
-                  <th>Train Name</th>
-                  <th>Destination</th>
-                  <th>Frequency (min)</th>
-                  <th>Next Departure</th>
-                  <th>Minutes to Departure</th>
-                </tr>
+              <!-- Table Header -->
+              <tr id="static-table-header">
+                <th>Train Name</th>
+                <th>Destination</th>
+                <th>Frequency (min)</th>
+                <th>Next Departure</th>
+                <th>Minutes to Departure</th>
+              </tr>
 
-                <!-- Note: Table Body is Dynamically Generated -->
-
-              </table>
-            </div>
+            </table>
           </div>
         </div>
       </div>
-      
-
-      <!-- Add a Train Panel -->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel panel-default">
-
-            <!-- Panel Title -->
-            <div class="panel-heading">
-              <h3 class="panel-title">Add a Train</h3>
-            </div>
-            
-            <!-- Panel Body -->
-            <div class="panel-body">
-
-              <!-- Add a Train Form -->
-              <form role="form">
-
-                <!-- Train Name -->
-                <div class="form-group">
-                  <label for="text">Train Name</label>
-                  <input type="text" class="form-control" id="nameInput">
-                </div>
-                
-                <!-- Destination -->
-                <div class="form-group">
-                  <label for="text">Train Destination</label>
-                  <input type="text" class="form-control" id="destinationInput">
-                </div>
-        
-                <!-- First Train Time -->
-                <div class="form-group">
-                  <label for="text">First Departure for Today (Military Time - hh:mm)</label>
-                  <input type="text" class="form-control" id="firstArrivalInput">
-                </div>
-                
-                <!-- Frequency -->
-                <div class="form-group">
-                  <label for="text">Frequency of Departures (min)</label>
-                  <input type="number" class="form-control" id="frequencyInput">
-                </div>
-                
-                <!-- Submit Button (send to database) -->
-                <button type="submit" class="btn btn-default" id="addTrainButton">Submit</button>
-
-              </form>
-
-            </div>
-          </div>
-        </div>    
-      </div>
-
     </div>
 
-    <!-- Link in jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <!-- Link in Fire Base CDN -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-    
-    <!-- Link in Moment.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <!-- Add a Train -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
 
-    <!-- Link in JavaScript -->
-    <script src="assets/js/app.js"></script>
+          <!-- Panel Title -->
+          <div class="panel-heading">
+            <h3 class="panel-title">Add a Train</h3>
+          </div>
 
-  </body>
+          <!-- Panel Body -->
+          <div class="panel-body">
+
+            <!-- Add a Train Form -->
+            <form role="form">
+
+              <!-- Train Name -->
+              <div class="form-group">
+                <label for="text">Train Name</label>
+                <input type="text" class="form-control" id="nameInput">
+              </div>
+
+              <!-- Destination -->
+              <div class="form-group">
+                <label for="text">Train Destination</label>
+                <input type="text" class="form-control" id="destinationInput">
+              </div>
+
+              <!-- First Train Time -->
+              <div class="form-group">
+                <label for="text">First Departure for Today (Military Time - hh:mm)</label>
+
+                <input type="text" class="form-control" id="firstArrivalInput">
+              </div>
+
+              <!-- Frequency -->
+              <div class="form-group">
+                <label for="text">Frequency of Departures (min)</label>
+                <input type="number" class="form-control" id="frequencyInput">
+              </div>
+
+              <!-- Submit Button (send to db) -->
+              <button type="submit" class="btn btn-default" id="addTrainButton">Submit</button>
+              <!-- Delete Button (delete child from db) -->
+              <button type="delete" class="btn btn-defualt" id="deleteTrainButton">Delete</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <select>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+    </select>
+
+  </div>
+
+  <!-- JQuery, Firebase, Moment.JS, JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
 
 </html>
